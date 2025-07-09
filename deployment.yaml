@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-nginx-static
+  namespace: my-project   # Новый namespace
+  labels:
+    app: deployment-nginx-static
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deployment-nginx-static
+  template:
+    metadata:
+      labels:
+        app: deployment-nginx-static
+    spec:
+      nodeSelector:              # Тут применяем фильтр по рабочим узлам
+        role: worker
+      containers:
+      - name: nginx
+        image: andreykassaev/nginx-static:latest
+        ports:
+        - containerPort: 80

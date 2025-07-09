@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-nginx-static
+  namespace: my-project   # Новый namespace
+spec:
+  type: NodePort
+  externalTrafficPolicy: Local  # Открываем порт только на тех узлах, где запущены Pods
+  selector:
+    app: deployment-nginx-static
+  ports:
+  - protocol: TCP
+    port: 80            # Сервисный порт
+    targetPort: 80       # Порт контейнера
+    nodePort: 30007     # Внешний порт на узле (измененный)
