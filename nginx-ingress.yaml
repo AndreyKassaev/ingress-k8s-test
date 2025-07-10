@@ -17,6 +17,9 @@ rules:
 - apiGroups: [""]
   resources: ["configmaps", "endpoints", "nodes", "pods", "secrets", "namespaces"]
   verbs: ["list", "watch", "get"]
+- apiGroups: ["discovery.k8s.io"]          # Добавил правила для endpointslices
+  resources: ["endpointslices"]
+  verbs: ["list", "watch", "get"]
 - apiGroups: ["networking.k8s.io"]
   resources: ["ingresses", "ingressclasses"]
   verbs: ["list", "watch", "get"]
