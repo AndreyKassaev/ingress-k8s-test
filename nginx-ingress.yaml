@@ -15,7 +15,7 @@ metadata:
   name: ingress-nginx
 rules:
 - apiGroups: [""]
-  resources: ["configmaps", "endpoints", "nodes", "pods", "secrets", "namespaces"]
+  resources: ["configmaps", "endpoints", "nodes", "pods", "secrets", "namespaces", "services"] #Add services
   verbs: ["list", "watch", "get"]
 - apiGroups: ["discovery.k8s.io"]          # Добавил правила для endpointslices
   resources: ["endpointslices"]
